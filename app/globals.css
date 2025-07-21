@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 45 25% 96%;
+    --foreground: 30 15% 15%;
+    --card: 42 20% 94%;
+    --card-foreground: 30 15% 15%;
+    --popover: 42 20% 94%;
+    --popover-foreground: 30 15% 15%;
+    --primary: 35 65% 55%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 40 15% 88%;
+    --secondary-foreground: 30 15% 15%;
+    --muted: 40 10% 90%;
+    --muted-foreground: 30 8% 45%;
+    --accent: 38 25% 85%;
+    --accent-foreground: 30 15% 15%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 40 15% 85%;
+    --input: 40 15% 85%;
+    --ring: 35 65% 55%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 30 15% 8%;
+    --foreground: 45 25% 95%;
+    --card: 30 15% 10%;
+    --card-foreground: 45 25% 95%;
+    --popover: 30 15% 10%;
+    --popover-foreground: 45 25% 95%;
+    --primary: 35 65% 65%;
+    --primary-foreground: 30 15% 8%;
+    --secondary: 30 10% 15%;
+    --secondary-foreground: 45 25% 95%;
+    --muted: 30 8% 18%;
+    --muted-foreground: 45 15% 65%;
+    --accent: 30 10% 15%;
+    --accent-foreground: 45 25% 95%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 30 10% 18%;
+    --input: 30 10% 18%;
+    --ring: 35 65% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: -0.01em;
+    background: linear-gradient(135deg, hsl(45, 25%, 96%) 0%, hsl(42, 20%, 94%) 50%, hsl(40, 15%, 92%) 100%);
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: hsl(30, 25%, 20%);
+  }
+
+  p,
+  span,
+  div {
+    color: hsl(30, 15%, 25%);
+  }
+}
+
+@layer components {
+  /* Luxury Background Gradients */
+  .bg-luxury-gradient {
+    background: linear-gradient(135deg, hsl(45, 25%, 96%) 0%, hsl(42, 20%, 94%) 50%, hsl(40, 15%, 92%) 100%);
+  }
+
+  .bg-luxury-card {
+    background: linear-gradient(135deg, hsl(42, 20%, 95%) 0%, hsl(40, 15%, 93%) 100%);
+  }
+
+  .bg-luxury-accent {
+    background: linear-gradient(135deg, hsl(38, 25%, 88%) 0%, hsl(35, 20%, 85%) 100%);
+  }
+
+  /* Luxury Text Colors */
+  .text-luxury-primary {
+    color: hsl(30, 25%, 20%);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .text-luxury-secondary {
+    color: hsl(30, 15%, 40%);
+    font-weight: 500;
+  }
+
+  .text-luxury-muted {
+    color: hsl(30, 10%, 55%);
+    font-weight: 400;
+  }
+
+  /* Luxury Card Styling */
+  .card-luxury {
+    @apply bg-luxury-card border border-border/50 rounded-xl shadow-lg;
+    box-shadow: 0 4px 6px -1px rgba(139, 69, 19, 0.05), 0 2px 4px -1px rgba(139, 69, 19, 0.03), inset 0 1px 0
+      rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-luxury:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -5px rgba(139, 69, 19, 0.1), 0 4px 6px -2px rgba(139, 69, 19, 0.05), inset 0 1px 0
+      rgba(255, 255, 255, 0.5);
+  }
+
+  /* Luxury Button Styling */
+  .btn-luxury {
+    @apply bg-gradient-to-r from-primary to-primary/90 text-primary-foreground;
+    @apply border border-primary/20 rounded-lg px-6 py-3 font-medium;
+    @apply shadow-md hover:shadow-lg transition-all duration-300;
+    @apply hover:scale-105 active:scale-95;
+    letter-spacing: 0.025em;
+    box-shadow: 0 4px 6px -1px rgba(139, 69, 19, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .btn-luxury:hover {
+    background: linear-gradient(135deg, hsl(35, 65%, 60%) 0%, hsl(35, 65%, 50%) 100%);
+  }
+
+  /* Luxury Input Styling */
+  .input-luxury {
+    @apply bg-luxury-card border border-border/60 rounded-lg px-4 py-3;
+    @apply focus:ring-2 focus:ring-primary/20 focus:border-primary/40;
+    @apply transition-all duration-200;
+    box-shadow: inset 0 2px 4px rgba(139, 69, 19, 0.05);
+  }
+
+  /* Luxury Navigation */
+  .nav-luxury {
+    @apply bg-luxury-card/80 border-b border-border/30;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 3px rgba(139, 69, 19, 0.1);
+  }
+
+  /* Luxury Badge */
+  .badge-luxury {
+    @apply bg-gradient-to-r from-primary/20 to-primary/10;
+    @apply text-primary border border-primary/30 rounded-full px-3 py-1;
+    @apply font-medium text-sm;
+    box-shadow: 0 1px 2px rgba(139, 69, 19, 0.1);
+  }
+
+  /* Luxury Table */
+  .table-luxury {
+    @apply bg-luxury-card rounded-lg overflow-hidden;
+    box-shadow: 0 4px 6px -1px rgba(139, 69, 19, 0.05);
+  }
+
+  .table-luxury th {
+    @apply bg-luxury-accent text-luxury-primary font-semibold px-6 py-4;
+    border-bottom: 1px solid hsl(40, 15%, 85%);
+  }
+
+  .table-luxury td {
+    @apply px-6 py-4 text-luxury-secondary;
+    border-bottom: 1px solid hsl(40, 10%, 90%);
+  }
+
+  .table-luxury tr:hover {
+    @apply bg-luxury-accent/30;
+  }
+
+  /* Luxury Animations */
+  .animate-luxury-fade-in {
+    animation: luxuryFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .animate-luxury-slide-up {
+    animation: luxurySlideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @keyframes luxuryFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes luxurySlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Luxury Scrollbar */
+  .luxury-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .luxury-scrollbar::-webkit-scrollbar-track {
+    background: hsl(40, 15%, 92%);
+    border-radius: 4px;
+  }
+
+  .luxury-scrollbar::-webkit-scrollbar-thumb {
+    background: hsl(35, 30%, 70%);
+    border-radius: 4px;
+  }
+
+  .luxury-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: hsl(35, 40%, 60%);
+  }
+}
